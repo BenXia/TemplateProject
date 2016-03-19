@@ -70,19 +70,19 @@ static MainViewManager* sInstance = nil;
     _tabBarController = nil;
     
     HomePageVC *homePageVC = [[HomePageVC alloc] init];
-    UINavigationController *nav1 = [[BaseNavigationController alloc] initWithRootViewController:homePageVC];
+    UINavigationController *nav1 = [[SafePushNavigationController alloc] initWithRootViewController:homePageVC];
     
     OfferInfoVC *offerInfoVC = [[OfferInfoVC alloc] init];
-    UINavigationController *nav2 = [[BaseNavigationController alloc] initWithRootViewController:offerInfoVC];
+    UINavigationController *nav2 = [[SafePushNavigationController alloc] initWithRootViewController:offerInfoVC];
     
     PublishVC *publishVC = [[PublishVC alloc] init];
-    UINavigationController *nav3 = [[BaseNavigationController alloc] initWithRootViewController:publishVC];
+    UINavigationController *nav3 = [[SafePushNavigationController alloc] initWithRootViewController:publishVC];
     
     IMHomeVC *imHomeVC = [[IMHomeVC alloc] init];
-    UINavigationController *nav4 = [[BaseNavigationController alloc] initWithRootViewController:imHomeVC];
+    UINavigationController *nav4 = [[SafePushNavigationController alloc] initWithRootViewController:imHomeVC];
 
     ProfileVC *profileVC = [[ProfileVC alloc] init];
-    UINavigationController *nav5 = [[BaseNavigationController alloc] initWithRootViewController:profileVC];
+    UINavigationController *nav5 = [[SafePushNavigationController alloc] initWithRootViewController:profileVC];
     
     _tabBarController = [[MainPageTabBarVC alloc] init];
     _tabBarController.tabBar.translucent = NO;
@@ -102,7 +102,7 @@ static MainViewManager* sInstance = nil;
                                                        nil]
                                              forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [UIColor themeBlueColor], NSForegroundColorAttributeName,
+                                                       [g_commonConfig themeBlueColor], NSForegroundColorAttributeName,
                                                        [UIFont systemFontOfSize:13.0], NSFontAttributeName,
                                                        nil]
                                              forState:UIControlStateSelected];

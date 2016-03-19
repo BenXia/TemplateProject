@@ -37,7 +37,7 @@
 }
 
 - (UIColor*)preferNavBarBackgroundColor {
-    return [UIColor themeBlueColor];
+    return [g_commonConfig themeBlueColor];
 }
 
 @end
