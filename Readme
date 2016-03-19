@@ -1,0 +1,73 @@
+/********该工程为样板工程，避免从零开始新项目********/
+1.修改TemplateProject中Target："TemplateProject"的右边面板中的Name为自己想要的ProjectName；
+2.修改TemplateProject（已被修改为ProjectName）中Target："TemplateProject"的名字为ProjectName；（重新打开工程如果有问题，记得删除无效的xcodeproj，重新添加xcodeproj）
+3.修改TemplateProject（已被修改为ProjectName）中Target："TemplateProject"（已被修改为ProjectName）buildSettings中所有的"TemplateProject"关键字为"ProjectName"；
+4.删除工程中的TemplateProject文件夹(Remove from refrences)；
+5.修改文件系统中TemplateProject文件夹名字为ProjectName，然后工程中重新添加该文件夹，把Supporting files中的info.plist文件夹Target Membership去掉；
+6.修改Provisioning Profiles文件夹下的证书和provision profile文件，更新工程中info.plist中app名称、bundle identifier，修改Build Settings中的证书和provision profile；
+7.修改Bin目录下的createPackages.sh（替换"TemplateProject"为"ProjectName"）和updateProvisions.sh脚本；
+8.修改.gitignore中的TemplateProject为ProjectName；
+9.删除.git文件夹，删除.gitmodules配置文件；
+9.github上建立新的仓库；
+10.命令行：
+git init
+git add --all
+git commit -m "first commit"
+git remote add origin git@github.com:BenXia/ProjectName.git
+git push -u origin master
+
+
+/*******************代码的协定*******************/
+》大括号：承袭苹果风格
+》属性初始化，能写getter里就写getter里，同时看需求；同时写到m文件最后
+》在同一个函数，可以用大括号来隔开不同功能的代码段
+》变量／属性命名：name＋type，如：confirmButton
+》定义常量的时候最好以小写字母k开头
+》额外强调的限制，以limit_为前缀；视情况，可以用LimitObject。
+》任何源文件不要超过800行
+》***VC    ViewController统一用VC做尾缀
+》***Cell  TableViewCell统一用Cell做尾缀
+》提交代码前保证没有新增warning；
+》统一TODO标签格式为”// TODO-***: ***”，方便发版本前统一检查
+   例如"// TODO-Ben: 等后端接口完成后集成调试"
+》方法名不要出现  func: :  (改为func:func:);
+》尽量不要用32位和64位中长度不一致的数据类型(例如:long, NSInteger, NSUInteger)；
+》
+  NSInteger a;
+  NSUInteger b;
+  NSLog (@"%zd  %tu", a, b);   // 用%zd %tu避免警告
+》相对布局（不要加多余的约束，也不要漏加约束）;
+》不要用storyboard，初始化布局配置尽量放到xib，View和VC刷新布局的实现
+  VC统一提取调用updateVCviewsConstraints（搞个Demo）；
+》NavigationBar的返回按钮UI不要自己定制，用全局定制的；
+》写代码时注意提取公共部分（封装变化）
+》自定义View尽量复用已有的
+》时间相关、字符串处理、去表情等与业务无关功能后续放入子工程
+》
+static const CGFloatkItemOriginX =0;
+static const CGFloat kItemOriginY = 0;
+static const CGFloat kItemWidth = 20;
+static const CGFloat kItemHeight = 20;
+static const CGFloat kItemHorizontalGap = 10;
+static const CGFloat kItemVerticalGap = 5;
+static const CGFloat kOneLineCount = 4;
+
+》 viewDidLoad中不去初始化View，而只是Add，特殊情况再看
+》 监听的放置，跟随ViewController的生命周期，要么init中，要么viewDidAppear中（根据业务逻辑注意放置位置）
+》 有关于View的操作，放在UIView和UIViewController中
+》 大的第三方依赖库，用CocoaPods管理；小的（几个文件的）用Vendor（常常会修改它）
+》 必须使用#pragma mark - 做代码区域划分
+#pragma mark - Life cycle
+#pragma mark - Initialize
+#pragma mark - Public methods
+#pragma mark - Private methods
+#pragma mark - IBActions & Gestures
+#pragma mark - Notification handler
+#pragma mark - UITextViewDelegate
+#pragma mark - UITableViewDelegate & UITableViewDataSource
+#pragma mark - Network response
+
+》 Action handle命名：didClick/TapOnLogin：did＋动作类型＋On＋事件名：与苹果命名一致
+》 GCD需要勤使用，数据处理部分，视情况需要放到主线程外
+》 业务操作放在ViewController，复杂的view控制抽出并封装起来Algorithm
+
