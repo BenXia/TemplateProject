@@ -9,12 +9,18 @@
 8.修改.gitignore中的TemplateProject为ProjectName；
 9.删除.git文件夹，删除.gitmodules配置文件；
 9.github上建立新的仓库；
-10.命令行：
+10.工程目录下命令行输入：
 git init
 git add --all
 git commit -m "first commit"
 git remote add origin git@github.com:BenXia/ProjectName.git
 git push -u origin master
+11.用Source Tree拉取github中仓库git@github.com:BenXia/ProjectName.git的代码；
+12.工程目录下命令行输入：
+git submodule add git@github.com:BenXia/StudioCommon.git ./StudioCommon
+git submodule init
+git submodule update
+13.用Source Tree提交submodule相关的改动；
 
 
 /*******************代码的协定*******************/
